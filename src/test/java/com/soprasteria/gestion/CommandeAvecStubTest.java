@@ -34,6 +34,11 @@ public class CommandeAvecStubTest {
 		IPaiement routeurPaiement = new IPaiement() {
 			@Override
 			public boolean transaction(String refCommercant, String pan, String moisExpiration, String anneeExpiration, String cvv2, double montant) {
+				// Comme l'idée ici c'est de créer un simulacre qui va toujours retourner `true`.
+				// On ne veut pas se soucier de comment la methode transaction fonctionne, on veut simplement
+				// tester le retour de la methode `commande.validerPaiement()`. C'est pourquoi on fait en sorte
+				// que la transaction soit toujours valide.
+				// Si on voulait tester la transaction également, on le ferai dans un test à part.
 				return true;
 			}
 		};
